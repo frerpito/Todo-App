@@ -1,0 +1,47 @@
+const API_URL = "http://localhost:3000/tasks";
+
+const taskForm = document.getElementById("task-form");
+const taskInput = document.getElementById("task-input");
+const taskList = document.getElementById("task-list");
+
+async function loadTasks() {
+  const response = await fetch(API_URL);
+
+  const tasks = await response.json();
+
+  taskList.innerHTML = "";
+
+  tasks.forEach(task => {
+    const li = document.createElement("li");
+
+    li.textContent = task.title;
+
+    taskList.appendChild(li);
+  });
+}
+
+taskForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const title = taskInput.value;
+
+  if (!title) return;
+
+  await fetch(API_URL, {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      title
+    })
+  });
+
+  taskInput.value = "";
+
+  loadTasks();
+});
+
+loadTasks();
