@@ -55,6 +55,26 @@ app.post("/tasks", (req, res) =>{
   );
 });
 
+app.delete("/tasks/:id", (req, res) => {
+  const { id } = req.params;
+
+  db.run(
+    "DELETE FROM tasks WHERE id = ?",
+    [id],
+    function (err) {
+      if (err) {
+        return res.status(500).json({
+          error: err.message
+        });
+      }
+
+      res.json({
+        message: "Tarefa deleteada"
+      });
+    }
+  );
+});
+
 app.listen(3000, () => {
   console.log("Servidor rodando na porta 3000 CARALHO!");
 });

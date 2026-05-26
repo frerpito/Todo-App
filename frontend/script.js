@@ -16,6 +16,20 @@ async function loadTasks() {
 
     li.textContent = task.title;
 
+    const deleteButton = document.createElement("button");
+
+    deleteButton.textContent = "Excluir";
+
+    deleteButton.addEventListener("click", async () => {
+      await fetch(`${API_URL}/${task.id}`, {
+        method: "DELETE"
+      });
+
+      loadTasks();
+    });
+
+    li.appendChild(deleteButton);
+
     taskList.appendChild(li);
   });
 }
