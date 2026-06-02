@@ -39,8 +39,8 @@ app.post("/tasks", (req, res) =>{
   const { title } = req.body;
 
   db.run(
-    "INSERT INTO tasks (title) VALUES (?)",
-    [title],
+    "INSERT INTO tasks (title, done) VALUES (?, ?)",
+    [title, 0],
     function (err) {
       if (err) {
         return res.status(500).json({error: err.message });
@@ -75,6 +75,34 @@ app.delete("/tasks/:id", (req, res) => {
   );
 });
 
+app.patch("/tasks/:id", (req, res) => {
+
+  const { id } = req.params;
+
+  db.run(
+    `
+    UPDATE tasks
+    SET done = NOT done
+    WHERE id = ?
+    `,
+    [id],
+    function(err) {
+
+      if(err) {
+        return res.status(500).json({
+          error: err.message
+        });
+      }
+
+      res.json({
+        message: "Tarefa atualizada"
+      });
+
+    }
+  );
+
+});
+
 app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000 CARALHO!");
+  console.log("Servidor rodando na porta 3000!");
 });

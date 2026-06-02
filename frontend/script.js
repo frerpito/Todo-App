@@ -14,7 +14,23 @@ async function loadTasks() {
   tasks.forEach(task => {
     const li = document.createElement("li");
 
-    li.textContent = task.title;
+    const checkbox = document.createElement("input");
+
+    checkbox.type = "checkbox";
+
+    checkbox.checked = Boolean(task.done);
+
+    checkbox.addEventListener("change", async () => {
+
+      await fetch(`${API_URL}/${task.id}`, {
+        method: "PATCH"
+      });
+
+      loadTasks();
+
+    });
+
+    const taskText = document.createTextNode(task.title);
 
     const deleteButton = document.createElement("button");
 
@@ -27,6 +43,10 @@ async function loadTasks() {
 
       loadTasks();
     });
+
+    li.appendChild(checkbox);
+
+    li.appendChild(taskText);
 
     li.appendChild(deleteButton);
 
