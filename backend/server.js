@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require("express"); //importação de módulo para esse arquivo
 const sqlite3 = require ("sqlite3").verbose();
 const cors = require("cors");
 
-const app = express();
+const app = express(); //criando instância da aplicação express. É essa por meio dessa instância que a gente vai usar rotas HTTP. Ela é como um 'objeto' do tipo 'Express'
 
 app.use(cors());
 app.use(express.json());

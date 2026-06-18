@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/tasks";
+const API_URL = "http://localhost:3000/tasks"; 
 
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
@@ -14,41 +14,45 @@ async function loadTasks() {
   tasks.forEach(task => {
     const li = document.createElement("li");
 
+    // Div esquerda
+    const leftContainer = document.createElement("div");
+    leftContainer.classList.add("task-content")
+
+    //Checkbox
     const checkbox = document.createElement("input");
 
     checkbox.type = "checkbox";
-
     checkbox.checked = Boolean(task.done);
 
     checkbox.addEventListener("change", async () => {
-
       await fetch(`${API_URL}/${task.id}`, {
         method: "PATCH"
       });
-
       loadTasks();
-
     });
 
-    const taskText = document.createTextNode(task.title);
+    //Texto
+    const taskText = document.createTextNode("span");
+    taskText.textContent = task.title;
 
+    //Botão Excluir
     const deleteButton = document.createElement("button");
-
     deleteButton.textContent = "Excluir";
 
     deleteButton.addEventListener("click", async () => {
       await fetch(`${API_URL}/${task.id}`, {
         method: "DELETE"
       });
-
       loadTasks();
     });
 
-    li.appendChild(checkbox);
+    //Montando estrutura do container de cada item da lista
+    li.appendChild(leftContainer)
 
-    li.appendChild(taskText);
+    leftContainer.appendChild(checkbox)
+    leftContainer.appendChild(taskText)
 
-    li.appendChild(deleteButton);
+    li.appendChild(deleteButton)
 
     taskList.appendChild(li);
   });
