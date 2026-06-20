@@ -24,7 +24,7 @@ form {
   gap: 10px;
 }
 
-input {
+#task-input {
   flex: 1;
   padding: 10px;
 }
@@ -50,6 +50,39 @@ li {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
+}
+
+input[type="checkbox"]{
+
+  width: 20px;
+  height: 20px; 
+
+}
+
+input[type="text"]{
+  appearance: none;
+
+  border: 1px solid #ddd;
+}
+
+button{
+  appearance: none;
+
+  color: white;
+  background-color: rgb(99, 99, 255);
+
+  border-width: 0px;
+  border-radius: 2px;
+}
+
+button:hover{
+  appearance: none;
+
+  color: white;
+  background-color: rgb(28, 28, 175);
+
+  border-width: 0px;
+  border-radius: 2px;
 }
 
 .task-content{
