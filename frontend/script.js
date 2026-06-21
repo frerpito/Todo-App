@@ -38,6 +38,7 @@ async function loadTasks() {
     //Botão Excluir
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Excluir";
+    deleteButton.id = "delete-button"
 
     deleteButton.addEventListener("click", async () => {
       await fetch(`${API_URL}/${task.id}`, {
