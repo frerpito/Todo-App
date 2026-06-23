@@ -13,6 +13,7 @@ async function loadTasks() {
 
   tasks.forEach(task => {
     const li = document.createElement("li");
+    li.classList.add(task.done ? "task-completa" : "task")
 
     // Div esquerda
     const leftContainer = document.createElement("div");
@@ -32,7 +33,7 @@ async function loadTasks() {
     });
 
     //Texto
-    const taskText = document.createTextNode("span");
+    const taskText = document.createElement("span");
     taskText.textContent = task.title;
 
     //Botão Excluir

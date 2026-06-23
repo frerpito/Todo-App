@@ -55,6 +55,17 @@ li {
   border-radius: 8px;
 }
 
+.task-completa{
+  background: rgb(230, 230, 230);
+  border: 0px;
+}
+
+.task-completa span{
+  text-decoration: line-through;
+  opacity: 0.7;
+
+}
+
 input[type="checkbox"]{
 
   width: 20px;
