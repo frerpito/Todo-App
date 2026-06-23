@@ -9,24 +9,32 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>Minha Lista</h1>
+  <div class="main-container">
 
-    <div id="task-div">
-      <form id="task-form">
-        <input
-          type="text"
-          id="task-input"
-          placeholder="Digite uma tarefa"
-        >
+    <div class="container">
+      <h1>Minha Lista</h1>
 
-        <button id="submit-button" type="submit">
-          Adicionar
-        </button>
-      </form>
+      <div id="task-div">
+        <form id="task-form">
+          <input
+            type="text"
+            id="task-input"
+            placeholder="Digite uma tarefa"
+          >
+
+          <button id="submit-button" type="submit">
+            Adicionar
+          </button>
+        </form>
+      </div>
+
+      <ul id="task-list"></ul>
     </div>
 
-    <ul id="task-list"></ul>
+    <div class="notas-container">
+      <textarea placeholder="Suas anotações aqui..."></textarea>
+    </div>
+
   </div>
 
   <script src="script.js"></script>

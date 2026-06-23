@@ -10,12 +10,39 @@ body {
   margin-top: 50px;
 }
 
+.main-container{
+  display: flex;
+  gap: 20px;
+}
+
 .container {
   color: rgb(75, 75, 75);;
   background: white;
   padding: 20px;
   border-radius: 8px;
   width: 450px;
+}
+
+.notas-container{
+  color: rgb(75, 75, 75);;
+  background: white;
+  padding: 20px;
+  border-radius: 8px; 
+  width: 450px;
+}
+
+.notas-container textarea{
+  appearance: none;
+
+  color: rgb(75, 75, 75);
+  border: 0px solid white;
+
+  height: 100%;
+  width: 100%;
+}
+
+.notas-container textarea:focus{
+  outline: none;
 }
 
 #task-div{
