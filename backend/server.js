@@ -10,6 +10,7 @@ app.use(express.json());
 const db = new sqlite3.Database("./database/database.db");
 
 db.serialize(() => {
+
   db.run(`
     CREATE TABLE IF NOT EXISTS tasks (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -17,12 +18,20 @@ db.serialize(() => {
       done INTEGER DEFAULT 0
     )
   `);
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS notes(
+      id INTEGER PRIMARY KEY,
+      content TEXT
+    )
+  `);
+
 });
 
 
 
 app.get("/", (req, res) => {
-  res.send("API funcionando OOOH CARALHO!!!!");
+  res.send("API funcionando!!!");
 });
 
 app.get("/tasks", (req, res) => {
@@ -99,6 +108,58 @@ app.patch("/tasks/:id", (req, res) => {
       });
 
     }
+  );
+
+});
+
+app.get("/notes", (req, res) => {
+  db.get(
+    "SELECT content FROM notes WHERE id = 1",
+    [],
+    (err, row) => {
+      
+      if(err){
+        return res.status(500).json({
+          error: err.message
+        });
+      }
+
+      res.json({
+        content: row?.content || ""
+      });
+      
+    }
+  );
+
+});
+
+app.patch("/notes", (req, res) => {
+  
+  const {content} = req.body;
+
+  db.run(
+    `
+    INSERT OR REPLACE INTO notes
+    (id, content)
+
+    VALUES(1, ?)    
+    `,
+
+    [content],
+
+    function(err){
+      if(err){
+        return res.status(500).json({
+          error: err.message
+        });
+      }
+
+      res.json({
+        message: "Nota salva"
+      });
+
+    }
+
   );
 
 });
