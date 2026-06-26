@@ -33,6 +33,7 @@ body {
 
 .notas-container textarea{
   appearance: none;
+  resize:none;
 
   color: rgb(75, 75, 75);
   border: 0px solid white;
