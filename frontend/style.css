@@ -26,7 +26,15 @@ body {
 
   min-width:450px;
   min-height:450px;
-  align-self:flex-start;
+  
+}
+
+.tasks-container{
+  width: 500px;
+}
+
+.notas-container{
+  width: 600px;
 }
 
 .notas-container textarea{
