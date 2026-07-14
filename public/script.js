@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3000/tasks"; 
+const API_URL = "http://localhost:3000/tasks"     //"http://localhost:3000/tasks"; 
+const NOTES_URL = "http://localhost:3000/notes"   //"http://localhost:3000/notes"; 
 
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
@@ -128,7 +129,7 @@ notesArea.addEventListener(
 
       console.log("Notas salvas");
 
-      }, 2000
+      }, 10000
     );
 
   }

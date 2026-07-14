@@ -192,3 +192,17 @@ input[type="text"]:focus{
   align-items: center;
   gap: 10px;
 }
+
+@media screen and (max-width: 768px){
+
+    .main-container{
+        flex-direction: column;
+    }
+
+    .tasks-container,
+    .notas-container{
+        width: 100%;
+        min-width: 0;
+    }
+
+}
