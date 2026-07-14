@@ -1,11 +1,14 @@
-const express = require("express"); //importação de módulo para esse arquivo
+const express = require ("express"); //importação de módulo para esse arquivo
 const sqlite3 = require ("sqlite3").verbose();
 const cors = require("cors");
+const path = require("path");
 
 const app = express(); //criando instância da aplicação express. É essa por meio dessa instância que a gente vai usar rotas HTTP. Ela é como um 'objeto' do tipo 'Express'
 
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "public")));
 
 const db = new sqlite3.Database("./database/database.db");
 
@@ -29,10 +32,12 @@ db.serialize(() => {
 });
 
 
-
+/*
 app.get("/", (req, res) => {
   res.send("API funcionando!!!");
 });
+*/
+
 
 app.get("/tasks", (req, res) => {
   db.all("SELECT * FROM tasks", [], (err, rows) => {
