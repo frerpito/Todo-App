@@ -197,12 +197,15 @@ input[type="text"]:focus{
 
     .main-container{
         flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 
     .tasks-container,
     .notas-container{
-        width: 100%;
+        width: 85%;
         min-width: 0;
+        max-width: 500px;
     }
 
 }
